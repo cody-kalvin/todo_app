@@ -3,13 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 class ActionImage<T> extends StatelessWidget {
-  const ActionImage({
-    this.src,
-    this.width = 100,
-    this.height = 100,
-    this.onTapped,
-  });
-
   final String src;
 
   final double width;
@@ -17,6 +10,13 @@ class ActionImage<T> extends StatelessWidget {
   final double height;
 
   final Function onTapped;
+
+  const ActionImage({
+    this.src,
+    this.width = 100,
+    this.height = 100,
+    this.onTapped,
+  });
 
   @override
   Widget build(BuildContext context) {

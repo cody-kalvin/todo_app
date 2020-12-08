@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/data/sqlite_persistence.dart';
 import 'package:todo_app/data/todo_repository.dart';
+import 'package:todo_app/model/todo.dart';
 import 'package:todo_app/provider/todo_store_model.dart';
 import 'package:todo_app/provider/todo_write_model.dart';
-import 'package:todo_app/ui/todo/todo_list_page.dart';
-import 'package:todo_app/ui/todo/todo_write_page.dart';
-
-import 'data/sqlite_persistence.dart';
-import 'model/todo.dart';
+import 'package:todo_app/ui/todo_list/todo_list_page.dart';
+import 'package:todo_app/ui/todo_write/todo_write_page.dart';
 
 void main() {
   runApp(TodoApp());
 }
 
 class TodoApp extends StatelessWidget {
-  static var store = TodoStoreModel(null);
+  static TodoStoreModel store = TodoStoreModel(null);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -55,7 +53,6 @@ class TodoApp extends StatelessWidget {
               return MaterialPageRoute(
                 builder: (context) {
                   return _buildRoute(
-                    context: context,
                     routeName: settings.name,
                     arguments: settings.arguments,
                   );
@@ -71,7 +68,6 @@ class TodoApp extends StatelessWidget {
   }
 
   Widget _buildRoute({
-    @required BuildContext context,
     @required String routeName,
     Object arguments,
   }) {
